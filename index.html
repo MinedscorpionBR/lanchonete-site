@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema inteligente de lanchonete para montar pedidos e calcular descontos automaticamente.">
+  <title>Sabor de rato | Monte seu pedido</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="marca"><img class="marca-icone" src="imagem/6186f452-410a-4388-ade6-9b00fb645a7c.png" alt=""><span>SABOR <strong>DE RATO</strong></span></div>
+    <span class="topo-legenda">Seu pedido, do nosso jeito.</span>
+  </header>
+
+  <main class="container">
+    <section class="introducao">
+      <span class="etiqueta">SISTEMA DA LANCHONETE</span>
+      <h1>Monte seu pedido.</h1>
+      <p>Escolha seus favoritos, informe as quantidades e deixe os cálculos com a gente.</p>
+    </section>
+
+    <div class="layout">
+      <form id="pedido-form" novalidate>
+        <section class="bloco">
+          <div class="titulo-bloco"><span class="numero">01</span><div><h2>Quem está pedindo?</h2><p>Primeiro, vamos identificar seu pedido.</p></div></div>
+          <label for="nome">Nome do cliente</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite seu nome" maxlength="80" autocomplete="name" required>
+        </section>
+
+        <section class="bloco">
+          <div class="titulo-bloco"><span class="numero">02</span><div><h2>Escolha seus lanches</h2><p>Você pode combinar mais de um tipo.</p></div></div>
+          <div class="produtos-grid">
+            <article class="produto">
+              <div class="produto-emoji">🍔</div>
+              <div class="produto-info"><h3>Hambúrguer</h3><p>R$ 18,00 <span> / unidade</span></p></div>
+              <label class="quantidade-label" for="hamburguer">Quantidade</label>
+              <input class="quantidade" type="number" id="hamburguer" name="hamburguer" min="0" step="1" value="0" inputmode="numeric">
+            </article>
+            <article class="produto">
+              <div class="produto-emoji">🥓</div>
+              <div class="produto-info"><h3>X-Bacon</h3><p>R$ 24,00 <span> / unidade</span></p></div>
+              <label class="quantidade-label" for="xbacon">Quantidade</label>
+              <input class="quantidade" type="number" id="xbacon" name="xbacon" min="0" step="1" value="0" inputmode="numeric">
+            </article>
+            <article class="produto">
+              <div class="produto-emoji">🥪</div>
+              <div class="produto-info"><h3>Sanduíche natural</h3><p>R$ 15,00 <span> / unidade</span></p></div>
+              <label class="quantidade-label" for="natural">Quantidade</label>
+              <input class="quantidade" type="number" id="natural" name="natural" min="0" step="1" value="0" inputmode="numeric">
+            </article>
+            <article class="produto">
+              <div class="produto-emoji">🐀</div>
+              <div class="produto-info"><h3>X-Ratão</h3><p>R$ 32,00 <span> / unidade</span></p></div>
+              <label class="quantidade-label" for="x-ratão">Quantidade</label>
+              <input class="quantidade" type="number" id="x-ratão" name="x-ratão" min="0" step="1" value="0" inputmode="numeric">
+            </article>
+          </div>
+          <p class="dica">💡 Comprando 3 ou mais lanches, você ganha 10% de desconto no valor dos lanches.</p>
+        </section>
+
+        <section class="bloco">
+          <div class="titulo-bloco"><span class="numero">03</span><div><h2>Vai querer uma bebida?</h2><p>Escolha uma opção e informe a quantidade.</p></div></div>
+          <div class="linha-bebida">
+            <div class="campo-grow">
+              <label for="bebida">Bebida</label>
+              <select id="bebida" name="bebida">
+                <option value="nenhuma">Nenhuma bebida</option>
+                <option value="coca-cola">Refrigerante-coca-cola · R$ 12,00</option>
+                <option value="coca-cola zero">Refrigerante-coca-cola zero · R$ 12,00</option>
+                <option value="sprite">Refrigerante-sprite · R$ 9,00</option>
+                <option value="sprite zero">Refrigerante-sprite zero · R$ 9,00</option>
+                <option value="fanta uva">Refrigerante-fanta uva · R$ 8,00</option>
+                <option value="fanta uva zero">Refrigerante-fanta uva zero · R$ 8,00</option>
+                <option value="fanta laranja">Refrigerante-fanta laranja · R$ 12,00</option>
+                <option value="fanta laranja zero">Refrigerante-fanta laranja zero · R$ 12,00</option>
+                <option value="suco de sangue de rato">Suco de sangue de rato · R$ 6,00</option>
+                <option value="suco de uva">Suco de uva · R$ 6,00</option>
+              </select>
+            </div>
+            <div class="campo-quantidade">
+              <label for="quantidade-bebida">Quantidade</label>
+              <input type="number" id="quantidade-bebida" name="quantidade-bebida" min="0" step="1" value="0" inputmode="numeric">
+            </div>
+          </div>
+        </section>
+
+        <section class="bloco">
+          <div class="titulo-bloco"><span class="numero">04</span><div><h2>Uma sobremesa para fechar?</h2><p>Opcional, mas fica a sugestão. 😋</p></div></div>
+          <label class="opcao-sobremesa" for="sobremesa">
+            <input type="checkbox" id="sobremesa" name="sobremesa">
+            <span class="sobremesa-emoji">🍰</span>
+            <span class="sobremesa-texto"><strong>Adicionar sobremesa</strong><small>R$ 8,00 a unidade</small></span>
+            <span class="preco-sobremesa">+ R$ 8,00</span>
+          </label>
+          <label class="opcao-adicional" for="adicional">
+            <input type="checkbox" id="adicional" name="adicional">
+            <span class="adicional-emoji">🐛</span>
+            <span class="adicional-texto"><strong>Adicionar barata em tudo?</strong><small>R$ 10,00 a unidade</small></span>
+            <span class="preco-adicional">+ R$ 10,00</span>
+          </label>
+        </section>
+
+        <section class="bloco">
+          <div class="titulo-bloco"><span class="numero">05</span><div><h2>Como deseja pagar?</h2><p>Escolha a forma de pagamento.</p></div></div>
+          <div class="pagamentos">
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="dinheiro"><span>💵</span><strong>Dinheiro</strong></label>
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="cartao"><span>💳</span><strong>Cartão</strong></label>
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="pix"><span>📱</span><strong>Pix</strong><small>5% de desconto</small></label>
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="alma"><span>👻</span><strong>Sua alma</strong></label>
+          </div>
+        </section>
+
+        <div id="mensagem-erro" class="mensagem-erro" role="alert" aria-live="polite" hidden></div>
+        <button type="submit" class="botao-calcular">Calcular meu pedido <span>→</span></button>
+      </form>
+
+      <aside class="painel-resumo" aria-live="polite">
+        <div class="resumo-cabecalho"><span>🧾</span><div><h2>Resumo do pedido</h2><p>Confira os valores antes de finalizar.</p></div></div>
+        <div id="resumo-vazio" class="resumo-vazio"><span>🛍️</span><strong>Seu pedido aparecerá aqui</strong><p>Preencha os campos e clique em “Calcular meu pedido”.</p></div>
+        <div id="resultado" hidden>
+          <p class="cliente-resumo">Pedido de <strong id="resumo-nome"></strong></p>
+          <div id="itens-resumo" class="itens-resumo"></div>
+          <div class="linha-valor"><span>Total dos lanches</span><strong id="total-lanches">R$ 0,00</strong></div>
+          <div class="linha-valor"><span>Total das bebidas</span><strong id="total-bebidas">R$ 0,00</strong></div>
+          <div class="linha-valor"><span>Sobremesa</span><strong id="total-sobremesa">R$ 0,00</strong></div>
+          <div class="linha-valor"><span>Adicional</span><strong id="total-adicional">R$ 0,00</strong></div>
+          <div class="linha-valor subtotal"><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+          <div class="linha-valor desconto"><span>Desconto por quantidade</span><strong id="desconto-lanches">− R$ 0,00</strong></div>
+          <div class="linha-valor desconto"><span>Desconto do pagamento</span><strong id="desconto-pix">− R$ 0,00</strong></div>
+          <div class="linha-valor forma-pagamento"><span>Forma de pagamento</span><strong id="resumo-pagamento">—</strong></div>
+          <div class="total-final"><span>VALOR FINAL</span><strong id="valor-final">R$ 0,00</strong></div>
+          <div id="classificacao" class="classificacao"></div>
+          <div class="mensagem-entrega">Seu endereço residencial foi processado com sucesso. Detectamos matéria orgânica e batimentos cardíacos dentro dessa residência por meio de drones; nossos agentes já iniciaram o deslocamento físico e se encontram a caminho. Aproveite o tempo restante em que você se encontra sozinho. Nos vemos em breve.😍</div>
+        </div>
+        <p class="rodape-resumo">Obrigado por escolher a Sabor de Rato! ❤️</p>
+      </aside>
+    </div>
+    <footer>Desenvolvimento Web • HTML, CSS e JavaScript</footer>
+  </main>
+</body>
+</html>
